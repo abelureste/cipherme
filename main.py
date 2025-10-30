@@ -2,12 +2,14 @@ from logo import logo
 from caesar_cipher import caesar_cipher
 from atbash import atbash
 from gematria import gematria
+from vigenere import vigenere
 
 cipher_name_list = "1 : Atbash Cipher  \n 2 : Caesar Cipher \n 3 : English Gematria Cipher \n 4 : Vigenere Cipher \n 5 : Playfair Cipher \n 6 : Columnar Transposition Cipher \n 7 : Baconian Cipher"
 cipher_list = {
   '1' : atbash,
   '2' : caesar_cipher,
   '3' : gematria,
+  '4' : vigenere,
   }
 
 print(logo)
