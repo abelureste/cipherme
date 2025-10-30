@@ -3,7 +3,7 @@ from caesar_cipher import caesar_cipher
 from atbash import atbash
 from gematria import gematria
 
-cipher_name_list = "1 : Caeser Cipher \n 2 : Atbash Cipher \n 3 : English Gematria \n 4 : Vigenere Cipher \n 5 : Playfair Cipher \n 6 : Columnar Transposition Cipher \n 7 : Baconian Cipher"
+cipher_name_list = "1 : Caesar Cipher \n 2 : Atbash Cipher \n 3 : English Gematria \n 4 : Vigenere Cipher \n 5 : Playfair Cipher \n 6 : Columnar Transposition Cipher \n 7 : Baconian Cipher"
 cipher_list = {
   '1' : caesar_cipher,
   '2' : atbash,

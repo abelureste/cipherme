@@ -1,7 +1,7 @@
 def caesar_cipher():
   print("\n----- You've chosen to use a Caesar Cipher -----")
 
-  string = input("Enter the string you want to encode: \n").lower()
+  string = input("Enter the message you would like to encode: \n")
   shift = int(input("Enter a shift value: \n"))
 
   alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
