@@ -1,7 +1,7 @@
 
 # Cipherme
 
-A small python program to encode strings using historically famous ciphers.
+A small python program to encode messages using historically famous ciphers.
 
 ![Cipherme](https://github.com/abelureste/cipherme/blob/main/assets/cipherme-demo.gif)
 
