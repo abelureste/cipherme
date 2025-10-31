@@ -43,5 +43,22 @@ def playfair():
 
   string = input("Enter the word you would like to encode: \n").lower()
 
+  def process_string(string):
+    string = list(string)
+    current_values = []
+    processed_string = []
+
+    for char in string:
+      if len(current_values) == 1:
+        current_values.append(char)
+        processed_string.append("".join(current_values))
+        current_values = []
+      else:
+        current_values.append(char)
+
+    print(processed_string)
+
+  process_string(string)
+
 
 playfair()
