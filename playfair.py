@@ -42,23 +42,59 @@ def playfair():
   print_tableau(tableau)
 
   string = input("Enter the word you would like to encode: \n").lower()
+  string = list(string)
+
+  for index, char in enumerate(string):
+    if char == ' ':
+      string.pop(index)
+
+  '''
 
   def process_string(string):
+    def append_and_join(value):
+      current_values.append(value)
+      processed_string.append(''.join(current_values))
+
     string = list(string)
     current_values = []
     processed_string = []
 
+    count = 1
+
     for char in string:
+      if char == ' ':
+        continue
       if len(current_values) == 1:
-        current_values.append(char)
-        processed_string.append("".join(current_values))
+        append_and_join(char)
         current_values = []
+      elif count == len(string):
+        append_and_join(char)
       else:
         current_values.append(char)
+      count += 1
+    
+    return processed_string
 
-    print(processed_string)
+  string = process_string(string)
+  print(string)
 
-  process_string(string)
+  '''
+
+  def find_char_xy(char):
+    for i in range(5):
+      for j in range(5):
+        if tableau[i][j] == char:
+          return[i, j]
+        
+  def encode():
+    encoded_string = []
+
+    for char in string:
+      find_char_xy(char)
+
+        
+  for val in string:
+    print(find_char_xy(val))
 
 
 playfair()
