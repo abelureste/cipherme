@@ -5,7 +5,7 @@ from gematria import gematria
 from vigenere import vigenere
 from playfair import playfair
 
-cipher_name_list = "1 : Atbash Cipher  \n 2 : Caesar Cipher \n 3 : English Gematria Cipher \n 4 : Vigenere Cipher \n 5 : Playfair Cipher \n 6 : Columnar Transposition Cipher \n 7 : Baconian Cipher"
+cipher_name_list = "1 : Atbash Cipher  \n 2 : Caesar Cipher \n 3 : English Gematria Cipher \n 4 : Vigenere Cipher \n 5 : Playfair Cipher"
 cipher_list = {
   '1' : atbash,
   '2' : caesar_cipher,

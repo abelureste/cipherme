@@ -1,5 +1,5 @@
 def playfair():
-  print("\n----- You've chosen to use an English Gematria Cipher -----")
+  print("\n----- You've chosen to use a Playfair Cipher -----")
   key = input("Enter the key you would like to use: \n").lower()
   alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -33,68 +33,67 @@ def playfair():
   
   def print_tableau(array2d):
     print("Your encoding tableau is: ")
-    for i in array2d:
-      print('')
-      for j in i:
-        print(j, end=' ')
-    print('\n')
+    for row in array2d:
+      print(' '.join(row))
 
   print_tableau(tableau)
 
-  string = input("Enter the word you would like to encode: \n").lower()
-  string = list(string)
-
-  for index, char in enumerate(string):
-    if char == ' ':
-      string.pop(index)
-
-  '''
+  string = input("Enter the word you would like to encode: \n")
 
   def process_string(string):
-    def append_and_join(value):
-      current_values.append(value)
-      processed_string.append(''.join(current_values))
+    string = str(string)
+    string = string.lower().replace('j','i')
 
-    string = list(string)
-    current_values = []
-    processed_string = []
+    digraphs = []
+    i = 0
+    while i < len(string):
 
-    count = 1
-
-    for char in string:
-      if char == ' ':
-        continue
-      if len(current_values) == 1:
-        append_and_join(char)
-        current_values = []
-      elif count == len(string):
-        append_and_join(char)
+      if i == len(string) - 1:
+        digraphs.append(string[i] + 'x')
+        i += 1
+      elif string[i] == string[i + 1]:
+        digraphs.append(string[i] + 'x')
+        i += 1
       else:
-        current_values.append(char)
-      count += 1
-    
-    return processed_string
+        digraphs.append(string[i] + string[i + 1])
+        i += 2
 
-  string = process_string(string)
-  print(string)
+    return digraphs
 
-  '''
+  digraphs = process_string(string)
 
-  def find_char_xy(char):
+  def find_char_coords(char ,tableau):
     for i in range(5):
       for j in range(5):
         if tableau[i][j] == char:
-          return[i, j]
+          return[j, i]
+    return (None, None)
         
-  def encode():
-    encoded_string = []
+  def encode(digraphs, tableau):
+    encoded_pairs = []
 
-    for char in string:
-      find_char_xy(char)
+    for pair in digraphs:
+      char1 = pair[0]
+      char2 = pair[1]
 
+      (r1, c1) = find_char_coords(char1, tableau)
+      (r2, c2) = find_char_coords(char2, tableau)
+
+      if r1 is None or r2 is None:
+        continue 
+
+      if r1 == r2:
+        encoded_pairs.append(tableau[r1][(c1 + 1) % 5])
+        encoded_pairs.append(tableau[r2][(c2 + 1) % 5])
         
-  for val in string:
-    print(find_char_xy(val))
+      elif c1 == c2:
+        encoded_pairs.append(tableau[(r1 + 1) % 5][c1])
+        encoded_pairs.append(tableau[(r2 + 1) % 5][c2])
+        
+      else:
+        encoded_pairs.append(tableau[c1][r2])
+        encoded_pairs.append(tableau[c2][r1]) 
 
+    return ''.join(encoded_pairs)
 
-playfair()
+  print(f'Youre encoded message is: \n{encode(digraphs, tableau)}')
